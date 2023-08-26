@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+}
+
+.half-screen {
+    height: 100vh; /* Half of the viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 4vh;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.left-half {
+    background-color: #f0f0f0; /* Light gray */
+}
+
+.right-half {
+    background-color: #e0e0e0; /* Lighter gray */
+    border-left: 2px solid black;
+}
+
+.half-screen h1 {
+    font-size: 7vh;
+    background-color: white;
+    border: 2px solid black;
+    z-index: 10;
+    width: 100%; /* Expand the h1 to full width */
+}
+
+.h2 {
+    margin-top: 5vh; /* Space between button and bottom of half */
+}
+.btn-success {
+    z-index: 15; /* Space between button and bottom of half */
+}
+
+.players {
+  position: relative; /* Ensure relative positioning */
+  height: 20em;
+  overflow: hidden;
+  padding-top: 20px;
+  z-index: 0;
+  -webkit-animation: autoScrolling 5s linear infinite;
+
+}
+.players .list-group-item {
+  padding-top: 60px;
+  display: flex;
+  height: 5em;
+}
+@keyframes autoScrolling {
+  0% {
+    transform: translateY(-50%);
+  }
+  65% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(0); /* Pause the animation at the bottom */
+  }
+  85% {
+    transform: translateY(0); /* Keep the pause for 10 seconds */
+  }
+  100% {
+    transform: translateY(100%); /* Resume the animation */
+  }
+}
+
+.players ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  animation: autoScrolling 15s linear 1s infinite;
+  transform: translateY(100%);
+  position: absolute; /* Position the ul absolutely within .players */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white; /* Add this line */
+}
