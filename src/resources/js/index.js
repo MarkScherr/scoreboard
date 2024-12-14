@@ -4,17 +4,17 @@ $(document).ready(function() {
 });
 
 const BASE_URL = 'http://localhost:8080'
-let FOOSBALL_PLAYER_ONE = new Map()
-let FOOSBALL_PLAYER_TWO = new Map()
-let SHUFFLE_PLAYER_ONE = new Map()
-let SHUFFLE_PLAYER_TWO = new Map()
+let FOOSBALL_PLAYER_ONE = new Map();
+let FOOSBALL_PLAYER_TWO = new Map();
+let SHUFFLE_PLAYER_ONE = new Map();
+let SHUFFLE_PLAYER_TWO = new Map();
 var SELECTED_LIST_ITEM = '';
-let FOOSBALL_USER_MAP = new Map()
-
+let FOOSBALL_USER_MAP = new Map();
+let SHUFFLE_USER_MAP = new Map();
+const TOP_SCORE_MAXIMUM = 10
 
 function linkClick(id) {
     name = id.slice(0, -6);
-    console.log("name: " + name);
     window[name + "Action"]();
 }
 

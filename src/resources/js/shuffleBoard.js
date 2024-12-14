@@ -1,6 +1,6 @@
 function startShuffleBoard() {
     emptyShuffle()
-    addScoreBoard(false, 'Shuffle');
+    addScoreBoard(false);
     addShuffleStartButton();
 }
 
@@ -17,6 +17,54 @@ function addShuffleStartButton() {
     `);
 }
 function shuffleStartAction() {
+    SHUFFLE_PLAYER_ONE = new Map();
+    SHUFFLE_PLAYER_TWO = new Map();
     emptyShuffle();
-    console.log('starting the shuffs');
+    addPlayerChoices(false);
+}
+
+function shuffleCancelSelectAction() {
+    startShuffle();
+}
+
+function playerOneShuffleChooseAction() {
+    setupPlayerSelection(false, true);
+}
+
+function playerTwoShuffleChooseAction() {
+    setupPlayerSelection(false, false);
+}
+
+function playerOneShuffleCreateAction() {
+    setupPlayerCreation(false, true);
+}
+
+function playerTwoShuffleCreateAction() {
+    setupPlayerCreation(false, false);
+}
+
+function submitPlayerOneShuffleUserAction() {
+    submitUser(false, true, 'shuffleUserInput');
+}
+
+function submitPlayerTwoShuffleUserAction() {
+    submitUser(false, false, 'shuffleUserInput');
+}
+
+function shuffleStartGameAction() {
+    addPlayersPlaying(false);
+}
+
+function shuffleCancelGameAction() {
+    startShuffle();
+}
+
+function submitShuffleScoresAction() {
+    let playerOneScore = $("#playerOneShuffleScore").val();
+    let playerTwoScore = $("#playerTwoShuffleScore").val();
+    if (playerOneScore === playerTwoScore || (playerOneScore != 10 && playerTwoScore != 10)) {
+        alert("This is an invalid score for Shuffleboard.  Score to 21 and then the game is over.  There can be no tie!");
+        return;
+    }
+    postScores(SHUFFLE_PLAYER_ONE, playerOneScore, SHUFFLE_PLAYER_TWO, playerTwoScore, false);
 }

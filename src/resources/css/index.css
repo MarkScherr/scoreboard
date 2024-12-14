@@ -81,3 +81,20 @@ body {
   width: 100%;
   background-color: white; /* Add this line */
 }
+
+
+#foosballExitButton {
+  padding-top: 60px;
+}
+
+#shuffleExitButton {
+  padding-top: 60px;
+}
+
+#foosballStartDiv {
+  padding-top: 60px;
+}
+
+#shuffleStartDiv {
+  padding-top: 60px;
+}

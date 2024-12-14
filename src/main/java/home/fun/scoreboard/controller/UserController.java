@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    private static final String CREATE_USER_ENDPOINT = "/{userName}";
+    private static final String CREATE_USER_ENDPOINT = "/submit";
     private static final String GET_HIGH_SCORES_ENDPOINT = "/highScores/{isFoosball}";
     private static final String GET_ALL_USERS_ENDPOINT = "/findAll";
 
@@ -21,8 +21,8 @@ public class UserController {
     }
 
     @PostMapping(CREATE_USER_ENDPOINT)
-    public User addUser(@PathVariable String userName) {
-        return userService.addUser(userName);
+    public User addUser(@RequestBody User user) {
+        return userService.addUser(user.getUserName());
     }
 
     @GetMapping(GET_HIGH_SCORES_ENDPOINT)
