@@ -70,6 +70,11 @@ function setupPlayerSelection(isFoosball, isPlayerOne) {
             inputTextHtml += '</select>';
             let sportDiv = isFoosball ? $("#centerFoosballDiv") : $("#centerShuffleDiv");
             sportDiv.append(inputTextHtml);
+            const game = isFoosball ? 'foosball' : 'shuffle';
+            sportDiv.append('<div class="col-md-12" id="' + game + 'ExitButton"><button id="' + game +
+               'CancelSelectButton" type="button" class="btn btn-lg btn-block btn-danger" ' +
+               'onClick=linkClick(this.id)>EXIT</button></div>'
+           );
             setupSearchBox(isFoosball, isPlayerOne);
         },
         error: function() {
@@ -78,17 +83,22 @@ function setupPlayerSelection(isFoosball, isPlayerOne) {
 }
 
 function setupPlayerCreation(isFoosball, isPlayerOne) {
-    isFoosball ? emptyFoosball() : emptyShuffle;
+    isFoosball ? emptyFoosball() : emptyShuffle();
     let game = isFoosball ? 'Foosball' : 'Shuffle'
     let player = isPlayerOne ? 'PlayerOne' : 'PlayerTwo'
     let centerDiv = isFoosball ? $("#centerFoosballDiv") : $("#centerShuffleDiv");
     let bottomDiv = isFoosball ? $("#bottomFoosballDiv") : $("#bottomShuffleDiv");
     let inputId = isFoosball ? 'foosballUserInput' : 'shuffleUserInput';
     centerDiv.append('<div class="container mt-5"><div class="row justify-content-center">' +
-        '<div class="col-md-6"><div class="input-group"><input id="' + inputId + '" type="text" class="form-control" ' +
+        '<div class="col-md-"><div class="input-group"><input id="' + inputId + '" type="text" class="form-control" ' +
         'placeholder="Enter your name" aria-label="Enter your name"><button id="submit' + player + game + 'UserButton" class="btn btn-primary" ' +
         'type="button" onClick=linkClick(this.id)>Submit</button></div></div></div></div>');
+    bottomDiv.append('<div class="col-md-12" id="' + game + 'ExitButton"><button id="' + game.toLowerCase() +
+        'CancelSelectButton" type="button" class="btn btn-lg btn-block btn-danger" ' +
+        'onClick=linkClick(this.id)>EXIT</button></div>'
+    );
 }
+
 function submitUser(isFoosball, isPlayerOne, inputId) {
     var data = JSON.stringify({
         userName: $('#' + inputId).val()
@@ -202,7 +212,7 @@ function addPlayersPlaying(isFoosball) {
         SHUFFLE_PLAYER_TWO.values().next().value;
     centerDiv.empty();
     bottomDiv.empty();
-    centerDiv.append('<div class="container mt-5"><div class="row"><div class="col-md-6">' +
+    centerDiv.append('<div class="container mt-5"><div class="row"><div class="col-md-12">' +
     '<h3 class="text-center">' + playerOne + '</h3><div class="input-group mb-3"><input type="number" ' +
     'class="form-control" id="' + playerOneScoreId + '" placeholder="Enter score for ' + playerOne + '" aria-label="Enter score for ' + playerOne +
     '" aria-describedby="player1-score" inputmode="numeric"></div></div><div class="col-md-6">' +
@@ -212,7 +222,7 @@ function addPlayersPlaying(isFoosball) {
     '<div class="col-md-12 text-center"><button class="btn btn-lg btn-block btn-success" ' +
     'type="button" id="' + submitButtonId + '" onClick=linkClick(this.id)>Complete Game</button></div></div>'
     );
-    $('#bottomFoosballDiv').append('<div class="col-md-12" id="' + game + 'ExitButton"><button ' +
+    bottomDiv.append('<div class="col-md-12" id="' + game + 'ExitButton"><button ' +
     'id="' + game + 'CancelSelectButton" type="button" class="btn btn-lg btn-block btn-danger" ' +
     'onClick=linkClick(this.id)>EXIT</button></div>'
     );

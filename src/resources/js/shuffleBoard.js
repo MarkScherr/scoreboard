@@ -24,7 +24,7 @@ function shuffleStartAction() {
 }
 
 function shuffleCancelSelectAction() {
-    startShuffle();
+    startShuffleBoard();
 }
 
 function playerOneShuffleChooseAction() {
@@ -56,7 +56,7 @@ function shuffleStartGameAction() {
 }
 
 function shuffleCancelGameAction() {
-    startShuffle();
+    startShuffleBoard();
 }
 
 function submitShuffleScoresAction() {

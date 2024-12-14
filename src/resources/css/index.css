@@ -1,9 +1,17 @@
+@font-face {
+    font-family: 'scoreboard';
+    src: url('scoreboard.ttf');
+}
+
 body {
     margin: 0;
+    background-color: black;
+    color: white;
+    font-family: 'scoreboard';
 }
 
 .half-screen {
-    height: 100vh; /* Half of the viewport height */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,90 +19,93 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
+    color: white;
+    border: 8px white;
 }
-
 .left-half {
-    background-color: #f0f0f0; /* Light gray */
+    background: url('https://example.com/christmas-backdrop1.jpg') no-repeat center center/cover; /* Replace with Christmas-themed backdrop URL */
 }
 
 .right-half {
-    background-color: #e0e0e0; /* Lighter gray */
-    border-left: 2px solid black;
+    background: url('https://example.com/christmas-backdrop2.jpg') no-repeat center center/cover; /* Replace with a second Christmas-themed backdrop URL */
+    border-left: 2px solid white;
 }
 
 .half-screen h1 {
     font-size: 7vh;
-    background-color: white;
-    border: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ff0000; /* Christmas red */
+    border: 4px solid #00ff00; /* Christmas green */
     z-index: 10;
     width: 100%; /* Expand the h1 to full width */
-}
-
-.h2 {
-    margin-top: 5vh; /* Space between button and bottom of half */
-}
-.btn-success {
-    z-index: 15; /* Space between button and bottom of half */
+    padding: 10px 0;
 }
 
 .players {
-  position: relative; /* Ensure relative positioning */
-  height: 20em;
-  overflow: hidden;
-  padding-top: 20px;
-  z-index: 0;
-  -webkit-animation: autoScrolling 5s linear infinite;
-
-}
-.players .list-group-item {
-  padding-top: 60px;
-  display: flex;
-  height: 5em;
-}
-@keyframes autoScrolling {
-  0% {
-    transform: translateY(-50%);
-  }
-  65% {
-    transform: translateY(0);
-  }
-  75% {
-    transform: translateY(0); /* Pause the animation at the bottom */
-  }
-  85% {
-    transform: translateY(0); /* Keep the pause for 10 seconds */
-  }
-  100% {
-    transform: translateY(100%); /* Resume the animation */
-  }
+    position: relative;
+    height: 20em;
+    overflow: hidden;
+    padding-top: 20px;
+    z-index: 0;
+    animation: autoScrolling 5s linear infinite;
+    background-color: rgba(34, 139, 34, 0.2);
 }
 
 .players ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  animation: autoScrolling 15s linear 1s infinite;
-  transform: translateY(100%);
-  position: absolute; /* Position the ul absolutely within .players */
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: white; /* Add this line */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    animation: autoScrolling 15s linear 1s infinite;
+    transform: translateY(100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-
-#foosballExitButton {
-  padding-top: 60px;
+.btn-success {
+    z-index: 15;
+    background-color: #00ff00;
+    border-color: #ff0000;
 }
 
-#shuffleExitButton {
-  padding-top: 60px;
+select {
+    background-color: black; /* Set dropdown menu background to black */
+    color: white; /* Text color for visibility */
+    border: 2px solid #00ff00; /* Christmas green border for dropdown */
+    padding: 5px;
+    font-size: 1rem;
+    font-family: 'scoreboard';
+    border-radius: 5px; /* Optional: rounded edges */
+    outline: none; /* Remove the default outline */
 }
 
-#foosballStartDiv {
-  padding-top: 60px;
+/* Style the dropdown options */
+select option {
+    background-color: black; /* Black background for the dropdown options */
+    color: white; /* White text color */
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
 }
 
-#shuffleStartDiv {
-  padding-top: 60px;
+/* Focus state for better user experience */
+select:focus {
+    border-color: #ff0000; /* Change border to Christmas red on focus */
+    outline: none; /* Remove default focus outline */
+}
+
+.select2-search__field {
+    background: black;
+  }
+.select2-container select2-container--bootstrap select2-container--open {
+    background: black;
+}
+
+.select2-results {
+    background: black;
+}
+
+.col-sm-6 {
+    background-image: url("../img/garland.png");
 }
